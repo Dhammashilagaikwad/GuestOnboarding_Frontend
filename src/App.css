@@ -1,0 +1,26 @@
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+
+.main-content {
+    height: calc(100vh - 120px); 
+    overflow-y: auto; 
+    background-image: url('/public/bgImage.avif'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    padding: 20px; 
+}
+
+
+footer {
+    padding: 20px;
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+}

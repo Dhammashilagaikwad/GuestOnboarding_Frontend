@@ -1,0 +1,83 @@
+/* General styles for the header */
+.navbar-container {
+    position: relative;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding: 10px 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+/* Basic navbar styling */
+.navbar {
+    padding: 10px 20px;
+}
+
+/* Logo Styling */
+.navbar-brand {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+/* Button Styling */
+.nav-link button {
+    border-radius: 50px;
+    border: 2px solid #007bff;
+    color: #007bff;
+    font-weight: 500;
+    padding: 8px 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effects for buttons */
+.nav-link button:hover {
+    background-color: #007bff;
+    color: #ffffff;
+    border: 2px solid #0056b3;
+}
+
+/* Styling for the navbar toggler */
+.navbar-toggler {
+    border-color: #007bff;
+}
+
+/* Styling for collapsed menu (mobile view) */
+.navbar-collapse {
+    background-color: #fff;
+}
+
+/* Adjusting menu items for a centered and neat look */
+.navbar-nav {
+    margin-left: auto;
+    text-align: center;
+}
+
+.nav-item {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+/* Adding a background change when scrolling */
+.navbar-container.scrolled {
+    background-color: #f8f9fa;
+}
+
+/* Ensure the navbar sticks to the top when scrolling */
+.navbar-container.sticky {
+    position: sticky;
+    top: 0;
+}
+
+/* Mobile responsive design */
+@media (max-width: 992px) {
+    .navbar-nav {
+        margin-left: 0;
+        text-align: left;
+    }
+
+    .nav-item {
+        margin-bottom: 1rem;
+    }
+}
