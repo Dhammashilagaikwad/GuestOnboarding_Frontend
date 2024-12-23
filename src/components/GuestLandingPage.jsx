@@ -11,7 +11,7 @@ const GuestLandingPage = () => {
         const fetchHotels = async () => {
             try {
               
-                const response = await axios.get('http://localhost:5000/api/hotels/guest-all');
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/hotels/guest-all`);
                 setHotels(response.data.hotels); 
             } catch (error) {
                 console.error('Error fetching hotels:', error);
@@ -37,7 +37,7 @@ const GuestLandingPage = () => {
                         <div className="card shadow-lg rounded-lg overflow-hidden hotel-card">
                             <div className="hotel-logo-container">
                                 <img
-                                    src={`http://localhost:5000${hotel.logo}`}
+                                    src={`${process.env.REACT_APP_BACKEND_URL}${hotel.logo}`}
                                     alt="Hotel Logo"
                                     className="hotel-logo"
                                 />
