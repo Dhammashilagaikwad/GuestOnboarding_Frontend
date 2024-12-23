@@ -32,6 +32,15 @@ const AdminHotel = () => {
 
     return (
         <div className="container my-5">
+
+             {/* Button to go back to Admin Dashboard */}
+             <button 
+                className="btn btn-secondary mt-4"
+                onClick={() => navigate('/admin-dashboard')} // Navigate to Admin Dashboard
+            >
+                Back to Admin Dashboard
+            </button>
+            
             {/* Header Section */}
             <div
                 className="text-white text-center p-5 rounded shadow"
@@ -66,13 +75,7 @@ const AdminHotel = () => {
                 </div>
             </div>
 
-            {/* Button to go back to Admin Dashboard */}
-            <button 
-                className="btn btn-secondary mt-4"
-                onClick={() => navigate('/admin-dashboard')} // Navigate to Admin Dashboard
-            >
-                Back to Admin Dashboard
-            </button>
+           
         </div>
     );
 };

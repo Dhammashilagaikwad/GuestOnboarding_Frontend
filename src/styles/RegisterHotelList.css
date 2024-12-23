@@ -1,0 +1,44 @@
+/* Responsive Table */
+@media (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table th, .table td {
+        white-space: nowrap;
+    }
+}
+
+/* Modal Adjustments */
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 10px;
+        padding: 20px;
+    }
+
+    .modal-content form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .btn-block {
+        width: 100%;
+    }
+}
+
+/* Image Responsiveness */
+@media (max-width: 576px) {
+    .img-thumbnail {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .img-fluid {
+        width: 80px !important;
+        height: 80px !important;
+    }
+}

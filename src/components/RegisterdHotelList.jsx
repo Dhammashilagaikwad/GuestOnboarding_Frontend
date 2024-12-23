@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../styles/RegisterHotelList.css';
 
 const RegisteredHotels = () => {
     const [hotels, setHotels] = useState([]);
@@ -79,9 +80,8 @@ const RegisteredHotels = () => {
     };
 
     const handleQrCodeClick = (hotelId) => {
-        navigate(`/admin-dashboard/admin-hotel/${hotelId}`); 
+        navigate(`/admin-dashboard/admin-hotel/${hotelId}`);
     };
-    
 
     return (
         <div className="container mt-5">
@@ -93,60 +93,62 @@ const RegisteredHotels = () => {
                     {successMessage && (
                         <div className="alert alert-success text-center">{successMessage}</div>
                     )}
-                    <table className="table table-bordered table-striped">
-                        <thead className="thead-dark">
-                            <tr>
-                                <th className="text-center">Logo</th>
-                                <th className="text-center">Hotel Name</th>
-                                <th className="text-center">Address</th>
-                                <th className="text-center">QR Code</th>
-                                <th className="text-center">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {hotels.map((hotel) => (
-                                <tr key={hotel._id}>
-                                    <td className="text-center">
-                                        <img
-                                            src={`${process.env.REACT_APP_API_BASE_URL}${hotel.logo}`}
-                                            alt="Logo"
-                                            className="img-thumbnail"
-                                            style={{ width: '60px', height: '60px', objectFit: 'cover' }}
-                                        />
-                                    </td>
-                                    <td className="text-center">{hotel.name}</td>
-                                    <td className="text-center">{hotel.address}</td>
-                                    <td className="text-center">
-                                        {hotel.qrCode && !isAdmin ? (
-                                            <img
-                                                src={hotel.qrCode}
-                                                alt="QR Code"
-                                                className="img-fluid"
-                                                style={{ width: '120px', height: '120px', objectFit: 'cover' }}
-                                                onClick={() => handleQrCodeClick(hotel._id)}
-                                            />
-                                        ) : (
-                                            <span>No QR</span>
-                                        )}
-                                    </td>
-                                    <td className="text-center">
-                                        <button
-                                            className="btn btn-warning btn-sm"
-                                            onClick={() => handleEdit(hotel)}
-                                        >
-                                            Edit
-                                        </button>
-                                        <button
-                                            className="btn btn-danger btn-sm ml-2"
-                                            onClick={() => handleDelete(hotel._id)}
-                                        >
-                                            Delete
-                                        </button>
-                                    </td>
+                    <div className="table-responsive">
+                        <table className="table table-bordered table-striped">
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th className="text-center">Logo</th>
+                                    <th className="text-center">Hotel Name</th>
+                                    <th className="text-center">Address</th>
+                                    <th className="text-center">QR Code</th>
+                                    <th className="text-center">Actions</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {hotels.map((hotel) => (
+                                    <tr key={hotel._id}>
+                                        <td className="text-center">
+                                            <img
+                                                src={`${process.env.REACT_APP_API_BASE_URL}${hotel.logo}`}
+                                                alt="Logo"
+                                                className="img-thumbnail"
+                                                style={{ width: '60px', height: '60px', objectFit: 'cover' }}
+                                            />
+                                        </td>
+                                        <td className="text-center">{hotel.name}</td>
+                                        <td className="text-center">{hotel.address}</td>
+                                        <td className="text-center">
+                                            {hotel.qrCode && !isAdmin ? (
+                                                <img
+                                                    src={hotel.qrCode}
+                                                    alt="QR Code"
+                                                    className="img-fluid"
+                                                    style={{ width: '120px', height: '120px', objectFit: 'cover' }}
+                                                    onClick={() => handleQrCodeClick(hotel._id)}
+                                                />
+                                            ) : (
+                                                <span>No QR</span>
+                                            )}
+                                        </td>
+                                        <td className="text-center">
+                                            <button
+                                                className="btn btn-warning btn-sm"
+                                                onClick={() => handleEdit(hotel)}
+                                            >
+                                                Edit
+                                            </button>
+                                            <button
+                                                className="btn btn-danger btn-sm ml-2"
+                                                onClick={() => handleDelete(hotel._id)}
+                                            >
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
