@@ -23,7 +23,7 @@ const GuestForm = () => {
   useEffect(() => {
     const fetchHotelDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/hotels/${hotelId}`);
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/hotels/${hotelId}`);
         setHotelName(response.data.hotel.name);
       } catch (error) {
         console.error('Error fetching hotel details:', error);
@@ -53,7 +53,7 @@ const GuestForm = () => {
     };
   
     try {
-      const response = await axios.post('http://localhost:5000/api/guests/guest-details', guestData);
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/guests/guest-details`, guestData);
       console.log('Guest added successfully:', response.data);
       navigate('/thank-you');
     } catch (error) {

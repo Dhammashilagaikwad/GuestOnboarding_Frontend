@@ -22,7 +22,7 @@ const GuestAdminDashboard = () => {
     }
 
     axios
-      .get("http://localhost:5000/api/guests/getAllGuests", {
+      .get(`${process.env.REACT_APP_API_BASE_URL}/api/guests/getAllGuests`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -68,7 +68,7 @@ const GuestAdminDashboard = () => {
 
     axios
       .put(
-        `http://localhost:5000/api/guests/updateGuest/${editGuest._id}`,
+        `${process.env.REACT_APP_API_BASE_URL}/api/guests/updateGuest/${editGuest._id}`,
         updatedDetails,
         {
           headers: {

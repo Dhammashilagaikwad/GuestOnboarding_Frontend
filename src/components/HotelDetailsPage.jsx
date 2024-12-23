@@ -12,7 +12,7 @@ const HotelDetailsPage = () => {
     useEffect(() => {
         const fetchHotelDetails = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/hotels/${hotelId}`);
+                const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/hotels/${hotelId}`);
                 setHotel(response.data.hotel); // Set the hotel details
             } catch (error) {
                 console.error('Error fetching hotel details:', error);
@@ -38,7 +38,7 @@ const HotelDetailsPage = () => {
             <div
                 className="text-white text-center p-5 rounded shadow"
                 style={{
-                    backgroundImage: `url(http://localhost:5000${hotel.coverImage})`,
+                    backgroundImage: `url(${process.env.REACT_APP_API_BASE_URL}${hotel.coverImage})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                 }}
@@ -52,7 +52,7 @@ const HotelDetailsPage = () => {
                 <div className="col-lg-6">
                     <div className="card shadow-sm border-0">
                         <img
-                            src={`http://localhost:5000${hotel.logo}`}
+                            src={`${process.env.REACT_APP_API_BASE_URL}${hotel.logo}`}
                             alt={hotel.name}
                             className="card-img-top"
                             style={{ height: '300px', objectFit: 'cover' }}

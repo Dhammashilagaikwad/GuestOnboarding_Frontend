@@ -16,7 +16,7 @@ const AddHotelForm = ({ hotels = [], setHotels = () => {} }) => {
             const token = localStorage.getItem('token');
 
             const response = await axios.post(
-                'http://localhost:5000/api/hotels/add',
+                (`${process.env.REACT_APP_API_BASE_URL}/api/hotels/add`),
                 formData,
                 {
                     headers: {

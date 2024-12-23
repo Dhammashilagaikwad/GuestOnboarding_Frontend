@@ -10,7 +10,7 @@ export default function LogoutPage() {
             try {
                 
                 await axios.post(
-                    "http://localhost:5000/api/roles/logout",
+                    `${process.env.REACT_APP_API_BASE_URL}/api/roles/logout`,
                     {},
                     {
                         withCredentials: true, 

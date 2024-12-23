@@ -29,7 +29,7 @@ export default function SignUp() {
         setSuccess(""); 
 
         try {
-            const response = await axios.post("http://localhost:5000/api/roles/signup", formData, {
+            const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/api/roles/signup`, formData, {
                 headers: {
                     "Content-Type": "application/json",
                 },

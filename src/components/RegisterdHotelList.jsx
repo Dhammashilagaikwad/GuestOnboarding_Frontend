@@ -16,7 +16,7 @@ const RegisteredHotels = () => {
         const fetchHotels = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get('http://localhost:5000/api/hotels/all', {
+                const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/hotels/all`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setHotels(response.data.hotels);
@@ -48,7 +48,7 @@ const RegisteredHotels = () => {
             if (newLogo) formData.append('logo', newLogo);
 
             const token = localStorage.getItem('token');
-            await axios.put(`http://localhost:5000/api/hotels/edit-hotel/${editingHotel._id}`, formData, {
+            await axios.put(`${process.env.REACT_APP_API_BASE_URL}/api/hotels/edit-hotel/${editingHotel._id}`, formData, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -68,7 +68,7 @@ const RegisteredHotels = () => {
     const handleDelete = async (hotelId) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.delete(`http://localhost:5000/api/hotels/delete-hotel/${hotelId}`, {
+            await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/hotels/delete-hotel/${hotelId}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setHotels(hotels.filter((hotel) => hotel._id !== hotelId));
@@ -108,7 +108,7 @@ const RegisteredHotels = () => {
                                 <tr key={hotel._id}>
                                     <td className="text-center">
                                         <img
-                                            src={`http://localhost:5000${hotel.logo}`}
+                                            src={`${process.env.REACT_APP_API_BASE_URL}${hotel.logo}`}
                                             alt="Logo"
                                             className="img-thumbnail"
                                             style={{ width: '60px', height: '60px', objectFit: 'cover' }}
