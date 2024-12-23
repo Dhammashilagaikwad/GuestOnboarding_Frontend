@@ -4,9 +4,21 @@ import axios from 'axios';
 
 const AddHotelForm = ({ hotels = [], setHotels = () => {} }) => {
     const [hotel, setHotel] = useState({ name: '', address: '', logo: '' });
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const addHotel = async () => {
+        if (!hotel.name || !hotel.address || !hotel.logo) {
+            alert('All fields are required.');
+            return;
+        }
+
+        if (!['image/jpeg', 'image/png', 'image/webp'].includes(hotel.logo.type)) {
+            alert('Only JPG, PNG, and WEBP files are allowed for the logo.');
+            return;
+        }
+
+        setLoading(true);
         try {
             const formData = new FormData();
             formData.append('name', hotel.name);
@@ -14,9 +26,8 @@ const AddHotelForm = ({ hotels = [], setHotels = () => {} }) => {
             formData.append('logo', hotel.logo);
 
             const token = localStorage.getItem('token');
-            console.log('Form Data:', formData);
             const response = await axios.post(
-                (`${process.env.REACT_APP_API_BASE_URL}/api/hotels/add`),
+                `${process.env.REACT_APP_API_BASE_URL}/api/hotels/add`,
                 formData,
                 {
                     headers: {
@@ -27,16 +38,19 @@ const AddHotelForm = ({ hotels = [], setHotels = () => {} }) => {
                 }
             );
 
-            console.log('Hotel added successfully:', response.data);
-
             if (setHotels) {
                 setHotels((prevHotels) => [...(prevHotels || []), response.data.hotel]);
             }
 
+            alert('Hotel added successfully!');
             setHotel({ name: '', address: '', logo: '' });
+            document.querySelector('input[type="file"]').value = '';
             navigate('/admin-dashboard/registered-hotels');
         } catch (error) {
             console.error('Error adding hotel:', error);
+            alert(error.response?.data?.message || 'Failed to add hotel. Please try again.');
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -77,8 +91,9 @@ const AddHotelForm = ({ hotels = [], setHotels = () => {} }) => {
                         type="button"
                         className="btn btn-primary w-100"
                         onClick={addHotel}
+                        disabled={loading}
                     >
-                        Add Hotel
+                        {loading ? 'Adding...' : 'Add Hotel'}
                     </button>
                 </form>
             </div>
