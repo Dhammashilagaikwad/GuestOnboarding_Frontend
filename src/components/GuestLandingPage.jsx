@@ -37,7 +37,7 @@ const GuestLandingPage = () => {
                         <div className="card shadow-lg rounded-lg overflow-hidden hotel-card">
                             <div className="hotel-logo-container">
                                 <img
-                                    src={`${process.env.REACT_APP_BACKEND_URL}${hotel.logo}`}
+                                    src={`${process.env.REACT_APP_API_BASE_URL}${hotel.logo}`}
                                     alt="Hotel Logo"
                                     className="hotel-logo"
                                 />
