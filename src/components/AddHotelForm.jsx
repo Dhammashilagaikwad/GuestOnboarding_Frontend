@@ -14,7 +14,7 @@ const AddHotelForm = ({ hotels = [], setHotels = () => {} }) => {
             formData.append('logo', hotel.logo);
 
             const token = localStorage.getItem('token');
-
+            console.log('Form Data:', formData);
             const response = await axios.post(
                 (`${process.env.REACT_APP_API_BASE_URL}/api/hotels/add`),
                 formData,
