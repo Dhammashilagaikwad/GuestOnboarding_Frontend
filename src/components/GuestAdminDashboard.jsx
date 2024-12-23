@@ -22,7 +22,7 @@ const GuestAdminDashboard = () => {
     }
 
     axios
-      .get(`${process.env.REACT_APP_API_BASE_URL}/api/guests/getAllGuests`, {
+      .get(`https://guest-onboarding-gilt.vercel.app/api/guests/getAllGuests`, { withCredentials: true } ,{
         headers: {
           Authorization: `Bearer ${token}`,
         },
