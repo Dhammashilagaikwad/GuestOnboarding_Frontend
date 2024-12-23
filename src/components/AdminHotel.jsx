@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const AdminHotel = () => {
     const { hotelId } = useParams(); 
     const [hotel, setHotel] = useState(null);
+    const navigate = useNavigate(); // Hook for navigation
 
-    
     useEffect(() => {
         const fetchHotelDetails = async () => {
             try {
@@ -65,6 +65,14 @@ const AdminHotel = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Button to go back to Admin Dashboard */}
+            <button 
+                className="btn btn-secondary mt-4"
+                onClick={() => navigate('/admin-dashboard')} // Navigate to Admin Dashboard
+            >
+                Back to Admin Dashboard
+            </button>
         </div>
     );
 };
